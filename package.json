@@ -19,6 +19,7 @@
   "homepage": "https://github.com/MotivatedDesigner/multiplayer_nodejs_websocket#readme",
   "dependencies": {
     "nodemon": "^2.0.15",
+    "uuid": "^8.3.2",
     "websocket": "^1.0.34"
   }
 }
