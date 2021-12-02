@@ -16,12 +16,22 @@ wsSocket.on("request", request => {
   connection.on('open', () => console.log('open'))
   connection.on('close', () => console.log('close'))
   connection.on('message', message => {
-    
+    try{console.log(JSON.parse(message.utf8Data))}
+    catch (e){
+      console.log(e)
+    }
   })
 
   const clientId = uuidv4()
   clients.set(clientId, {
     connection
   })
-  
+
+  const payload = {
+    "method": "connect",
+    clientId
+  }
+
+  connection.send(JSON.stringify(payload))
+
 })
