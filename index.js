@@ -9,17 +9,15 @@ httpSrver.listen(3030, console.log('fofofo'))
 const wsSocket = new websocketServer({"httpServer": httpSrver})
 
 wsSocket.on("request", request => {
-  console.log('request',request)
 
   const connection = request.accept(null, request.origin)
-
   connection.on('open', () => console.log('open'))
   connection.on('close', () => console.log('close'))
   connection.on('message', message => {
-    try{console.log(JSON.parse(message.utf8Data))}
-    catch (e){
-      console.log(e)
-    }
+    // try{console.log(JSON.parse(message.utf8Data))}
+    // catch (e){
+    //   console.log(e)
+    // }
   })
 
   const clientId = uuidv4()
