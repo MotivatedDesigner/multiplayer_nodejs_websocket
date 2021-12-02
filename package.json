@@ -1,0 +1,24 @@
+{
+  "name": "multiplayer_nodejs_websocket",
+  "version": "1.0.0",
+  "description": "a multiplayer game with NodeJS as backend &amp; web-Sockets",
+  "main": "index.js",
+  "scripts": {
+    "run": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MotivatedDesigner/multiplayer_nodejs_websocket.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MotivatedDesigner/multiplayer_nodejs_websocket/issues"
+  },
+  "homepage": "https://github.com/MotivatedDesigner/multiplayer_nodejs_websocket#readme",
+  "dependencies": {
+    "nodemon": "^2.0.15",
+    "websocket": "^1.0.34"
+  }
+}
