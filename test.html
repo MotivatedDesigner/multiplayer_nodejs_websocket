@@ -7,10 +7,23 @@
   <title>Multiplayer Test</title>
 </head>
 <body>
+  <button id="create">create</button>
   <script>
+    let clientId
+    const createBtn = document.getElementById('create')
     const ws = new WebSocket("ws://localhost:3030")
 
-    ws.onmessage = message => console.log(JSON.parse(message.data))
+    createBtn.addEventListener('click', () => {
+      ws.send(JSON.stringify({
+        method: "create",
+        clientId
+      }))
+    })
+
+    ws.onmessage = message => {
+      const data = JSON.parse(message.data)
+      if(data.method === 'connect') clientId = data.clientId
+    }  
   </script>
 </body>
 </html>

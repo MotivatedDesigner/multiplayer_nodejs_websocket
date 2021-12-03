@@ -14,10 +14,13 @@ wsSocket.on("request", request => {
   connection.on('open', () => console.log('open'))
   connection.on('close', () => console.log('close'))
   connection.on('message', message => {
-    // try{console.log(JSON.parse(message.utf8Data))}
-    // catch (e){
-    //   console.log(e)
-    // }
+    try{
+      const data = JSON.parse(message.utf8Data)
+      if(data.method === "create") console.log('data',data)
+    }
+    catch (e){
+      console.log(e)
+    }
   })
 
   const clientId = uuidv4()
