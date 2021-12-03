@@ -8,8 +8,10 @@
 </head>
 <body>
   <button id="create">create</button>
+  <button id="join">join</button>
+  <input type="text" id="game-id" >
   <script>
-    let clientId
+    let clientId, gameId
     const createBtn = document.getElementById('create')
     const ws = new WebSocket("ws://localhost:3030")
 
@@ -22,7 +24,12 @@
 
     ws.onmessage = message => {
       const data = JSON.parse(message.data)
-      if(data.method === 'connect') clientId = data.clientId
+      switch(data.method) {
+        case 'connect':
+          clientId = data.clientId; break
+        case 'create':
+          gameId = data.gameId; break
+      }
     }  
   </script>
 </body>
