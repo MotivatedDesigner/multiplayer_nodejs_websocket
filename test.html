@@ -13,6 +13,7 @@
   <script>
     let clientId, gameId
     const createBtn = document.getElementById('create')
+    const joinBtn = document.getElementById('join')
     const ws = new WebSocket("ws://localhost:3030")
 
     createBtn.addEventListener('click', () => {
@@ -22,13 +23,21 @@
       }))
     })
 
+    joinBtn.addEventListener('click', () => {
+      ws.send(JSON.stringify({
+        method: "join",
+        clientId,
+        gameId
+      }))
+    })
+
     ws.onmessage = message => {
       const data = JSON.parse(message.data)
       switch(data.method) {
         case 'connect':
           clientId = data.clientId; break
         case 'create':
-          gameId = data.gameId; break
+          gameId = data.game.gameId; break
       }
     }  
   </script>

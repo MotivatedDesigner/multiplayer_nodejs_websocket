@@ -39,9 +39,16 @@ wsSocket.on("request", request => {
 
           const connection = clients.get(data.clientId).connection
           if(!connection) throw new Error(`this client with id: ${data.clientId} !exist`)
-          connection.send( JSON.stringify(game) )
+          connection.send( JSON.stringify({
+            method: 'create',
+            game
+          }) )
         break
-
+        case 'join':
+          // const theGame = games.get(data.gameId)
+          // if(!theGame) throw new Error(`this game with id: ${data.gameId} !exist`)
+          // connection.send( JSON.stringify(theGame) )
+        break
       }
     }
     catch (e){
